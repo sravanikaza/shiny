@@ -54,7 +54,7 @@ shinyUI(
                       helpText("This datas was extractd from the 1974 Motor Trend US magazzine,",
                                " and consists of  fuel consumption and 10 aspects of automobile design and performance",
                                " for 32 automobiles (1973-74 models). You can visit the link for any additional data queries."),
-                     
+                      
                       
                       
              ),
