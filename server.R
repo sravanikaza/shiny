@@ -1,30 +1,30 @@
 library(shiny)
 library(datasets)
 
-mpgData <- mtcars
-mpgData$am <- factor(mpgData$am, labels = c("Automatic", "Manual"))
+mpgDeet <- mtcars
+mpgDeet$am <- factor(mpgDeet$am, labels = c("Automatic", "Manual"))
 
 shinyServer(function(input, output) {
   
-  formulaText <- reactive({
+  forate <- reactive({
     paste("mpg ~", input$variable)
   })
   
-  formulaTextPoint <- reactive({
+  fortep <- reactive({
     paste("mpg ~", "as.integer(", input$variable, ")")
   })
   
   fit <- reactive({
-    lm(as.formula(formulaTextPoint()), data=mpgData)
+    lm(as.formula(fortep()), data=mpgDeet)
   })
   
   output$caption <- renderText({
-    formulaText()
+    forate()
   })
   
   output$mpgBoxPlot <- renderPlot({
-    boxplot(as.formula(formulaText()), 
-            data = mpgData,
+    boxplot(as.formula(forate()), 
+            data = mpgDeet,
             outline = input$outliers)
   })
   
@@ -33,8 +33,8 @@ shinyServer(function(input, output) {
   })
   
   output$mpgPlot <- renderPlot({
-    with(mpgData, {
-      plot(as.formula(formulaTextPoint()))
+    with(mpgDeet, {
+      plot(as.formula(fortep()))
       abline(fit(), col=2)
     })
   })
