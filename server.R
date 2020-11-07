@@ -22,11 +22,9 @@ shinyServer(function(input, output) {
     forate()
   })
   
-  output$mpgBoxPlot <- renderPlot({
-    boxplot(as.formula(forate()), 
-            data = mpgDeet,
-            outline = input$outliers)
-  })
+  output$ExtraTab <- renderText(input$slidyslide
+    
+  )
   
   output$fit <- renderPrint({
     summary(fit())
